@@ -1,16 +1,20 @@
-import React from "react";
+// src/components/Item.js
 
-function Item({ item }) {
+import React from 'react';
+
+const Item = ({ item, onAddToCart }) => {
+  // Define the function to handle adding the item to the cart
+  const handleAddToCartClick = () => {
+    onAddToCart(item.id);
+  };
+
   return (
-    <li className={item.isInCart ? "in-cart" : ""}>
-      <span>{item.name}</span>
-      <span className="category">{item.category}</span>
-      <button className={item.isInCart ? "remove" : "add"}>
-        {item.isInCart ? "Remove From" : "Add to"} Cart
-      </button>
-      <button className="remove">Delete</button>
-    </li>
+    <div className="item">
+      <h2>{item.name}</h2>
+      <p>Category: {item.category}</p>
+      <button onClick={handleAddToCartClick}>Add to Cart</button>
+    </div>
   );
-}
+};
 
 export default Item;
